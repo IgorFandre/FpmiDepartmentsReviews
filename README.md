@@ -6,3 +6,5 @@
 * Хорошая (2020) [**статья**](https://vk.com/@miptfpmi-kafedry-fpmi?anchor=kafedry-fpmi-nauka-fupm-matematicheskaya-fizika) про кафедры.
 * Сама [**форма**](https://forms.gle/tRwK6HTUhvdqAssB7). (Если Вы уже поступили, учитесь на кафедре и Вам есть чем поделиться, пожалуйста, заполните).
 Ответы автоматически подтягиваются с формы.
+
+
