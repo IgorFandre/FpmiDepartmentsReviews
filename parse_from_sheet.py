@@ -6,10 +6,19 @@ import pandas as pd
 with open('config.json', 'r') as f:
     conf = json.load(f)
 
-conf['client_id'] = os.environ['client_id']
-conf['client_email'] = os.environ['client_email']
-conf['private_key'] = os.environ['private_key']
-conf['private_key_id'] = os.environ['private_key_id']
+conf = {
+  "type": "service_account",
+  "project_id": "shaped-kite-420114",
+  "private_key_id": os.environ.get('private_key_id'),
+  "private_key": os.environ.get('private_key').replace('\\n', '\n'),
+  "client_email": os.environ.get('client_email'),
+  "client_id": os.environ.get('client_id'),
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/myaccauntchanels%40shaped-kite-420114.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
 
 #Открываем таблицу
 gc = gspread.service_account_from_dict(conf)
