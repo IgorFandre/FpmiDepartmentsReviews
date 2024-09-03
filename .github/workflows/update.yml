@@ -33,6 +33,6 @@ jobs:
             private_key: ${{ secrets.PRIVATE_KEY }}
             private_key_id: ${{ secrets.PRIVATE_KEY_ID }}
           run: |
-            python3 parse_from_sheet.py $client_id $client_email $private_key $private_key_id
+            python3 parse_from_sheet.py
 
         - uses: stefanzweifel/git-auto-commit-action@v5

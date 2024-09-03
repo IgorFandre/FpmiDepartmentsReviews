@@ -1,16 +1,15 @@
 import gspread
 import json
-import sys
+import os
 import pandas as pd
 
 with open('config.json', 'r') as f:
     conf = json.load(f)
 
-if len(sys.argv) > 1:
-    conf['client_id'] = sys.argv[1]
-    conf['client_email'] = sys.argv[2]
-    conf['private_key'] = sys.argv[3]
-    conf['private_key_id'] = sys.argv[4]
+conf['client_id'] = os.environ['client_id']
+conf['client_email'] = os.environ['client_email']
+conf['private_key'] = os.environ['private_key']
+conf['private_key_id'] = os.environ['private_key_id']
 
 #Открываем таблицу
 gc = gspread.service_account_from_dict(conf)
@@ -77,7 +76,7 @@ for depart in departments:
         }
     )
     info_str += f'\n# {depart}\n'
-    info_str += f'\n## Количественные вопросы.\n'
+    info_str += f'\n## Оценки от студентов и выпускников.\n'
     info_str += f'\n{d_numbers.to_markdown(index=False)}\n'
     info_str += get_answers(d_info.iloc[:, [2]+list(range(8, 18))], '## Общие вопросы.')
     info_str += get_answers(d_info.iloc[:, [2]+list(range(18, 23))], '## Про науку.')
