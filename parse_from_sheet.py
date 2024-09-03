@@ -22,7 +22,7 @@ conf = {
 
 #Открываем таблицу
 gc = gspread.service_account_from_dict(conf)
-sh = gc.open("Опрос студентов о базовых кафедрах (Ответы)")
+sh = gc.open("Опрос студентов о базовых кафедрах бакалавриата (Отзывы)")
 worksheet = sh.sheet1
 
 #Достаем значения
