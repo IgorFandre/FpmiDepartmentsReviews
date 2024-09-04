@@ -69,7 +69,7 @@ def get_answers(df, title):
 
 df = pd.DataFrame(list_of_lists[1:], columns=list_of_lists[0])
 for i in range(3, 8):
-    df[df.columns[i]] = df[df.columns[i]].astype(int)
+    df[df.columns[i]] = pd.to_numeric(df[df.columns[i]])
 
 departments = sorted(list(set(df.iloc[:, 1])))
 
@@ -93,6 +93,7 @@ for depart in departments:
         }
     )
     info_str += f'\n# {depart}\n'
+    info_str += f'\n## Количество ответов: {(df[df.columns[1]] == depart).sum()}.\n'
     info_str += f'\n## Оценки от студентов и выпускников.\n'
     info_str += f'\n{d_numbers.to_markdown(index=False)}\n'
     info_str += get_answers(d_info.iloc[:, [2]+list(range(8, 18))], '## Общие вопросы.')
