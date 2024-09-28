@@ -77,7 +77,8 @@ departments = sorted(list(set(df.iloc[:, 1])))
 if len(departments) > 0:
     info_str += '# Содержание:\n'
     for i, depart in enumerate(departments):
-        info_str += f'{i}) [{depart}](#{"-".join((depart.lower().replace(".", "").replace(")", "").replace("(", "")).replace('"', "")).split())})\n'
+        depart_prepared = depart.lower().replace(".", "").replace(")", "").replace("(", "").replace('"', "")
+        info_str += f'{i}) [{depart}](#{"-".join(depart_prepared.split())})\n'
 
 for depart in departments:
     d_info = df.loc[df[df.columns[1]] == depart]
