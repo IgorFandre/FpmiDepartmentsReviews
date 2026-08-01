@@ -8,6 +8,9 @@ on:
   push:
     branches: [ "master" ]
 
+permissions:
+  contents: write
+
 jobs:
     build:
       runs-on: ubuntu-latest
@@ -34,5 +37,8 @@ jobs:
             private_key_id: ${{ secrets.PRIVATE_KEY_ID }}
           run: |
             python3 parse_from_sheet.py
+
+        - name: Keep scheduled workflow active
+          run: date -u +%Y-%m > .github/last-scheduled-run
 
         - uses: stefanzweifel/git-auto-commit-action@v5
